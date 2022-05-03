@@ -1,6 +1,7 @@
 package ru.yegor.pastabox.service;
 
 import lombok.RequiredArgsConstructor;
+import lombok.Setter;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Service;
 import ru.yegor.pastabox.api.request.PastaboxRequest;
@@ -17,10 +18,11 @@ import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
+@Setter
 @ConfigurationProperties(prefix = "app")
 public class PastaboxServiceImpl implements PastaboxService {
-    private String host = "http://abc.ru";
-    private int publicListSize = 10;
+    private String host;
+    private int publicListSize;
 
     private final PastaboxRepository repository;
     private AtomicInteger idGenerator = new AtomicInteger(0);
